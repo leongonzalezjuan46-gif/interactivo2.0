@@ -103,7 +103,7 @@
       position: relative;
       width: 300px;
       height: 600px;
-      background-image: url('/guitarr.png');
+      background-image: url('guitarr.png');
       background-size: cover;
       border: 2px solid #937474;
       border-radius: 10px;
@@ -212,7 +212,7 @@
 <body>
   <div id="header">
     <div class="nav" style="text-align:center;">
-      <h3>Bienvenido a "Conociendo el cuerpo humano"</h3>
+      <h3>Bienvenido a "bienbenido a conociendo la guitarra"</h3>
     </div>
   </div>
   <div id="seccion">
@@ -236,19 +236,19 @@
       </div>
       <div class="subcontenido2">
         <div class="proyecto">
-          <img id="imagen-info" src="/hotspot-cursor.png" alt="Imagen info" style="width:100%; height:100%; border-radius:10px;">
+          <img id="imagen-info" src="hotspot-cursor.png" alt="Imagen info" style="width:100%; height:100%; border-radius:10px;">
         </div>
       </div>
       <div id="resultado" class="invisible">
         <h2>Tu resultado:</h2>
         <span id="calif" class="texto-rojo">0/0</span>
-        <img id="imagen-resultado" width="200px" src="/sii.gif" />
+        <img id="imagen-resultado" width="200px" src="sii.gif" />
       </div>      
     </div>
   </div>
   <div id="footer">
-    <div id="instrucciones"><img width="100px" src="/instrucciones.png" /></div>
-    <div id="prueba"><img width="100px" src="/test.png" /></div>
+    <div id="instrucciones"><img width="100px" src="instrucciones.png" /></div>
+    <div id="prueba"><img width="100px" src="test.png" /></div>
   </div>
   <script type="text/javascript">
     let puntaje = 0;
@@ -257,12 +257,12 @@
     document.getElementById('hotspot1').onclick = function() {
       document.getElementById('titulo-info').textContent = 'Truss rod cover (Cubierta del alma o varilla de ajuste)';
       document.getElementById('texto-info').textContent = 'Es una tapa que protege el acceso a la varilla de ajuste (truss rod) que va dentro del mástil.';
-      document.getElementById('imagen-info').setAttribute('src', '/mast.jpg');    
+      document.getElementById('imagen-info').setAttribute('src', 'mast.jpg');    
     };
     document.getElementById('hotspot2').onclick = function() {
       document.getElementById('titulo-info').textContent = 'Neck (Mástil)';
       document.getElementById('texto-info').textContent = 'Es la parte larga que une la cabeza con el cuerpo y en ella se apoyan los dedos al tocar. Dentro del mástil lleva una varilla metálica llamada alma, que ayuda a mantenerlo recto y a resistir la tensión de las cuerdas.';
-      document.getElementById('imagen-info').setAttribute('src', '/mastil.jpg');
+      document.getElementById('imagen-info').setAttribute('src', 'mastil.jpg');
     };
     
     document.getElementById('hotspot3').onclick = function() {
@@ -280,7 +280,7 @@
     document.getElementById('hotspot5').onclick = function() {
       document.getElementById('titulo-info').textContent = 'Nut (Cejuela)';
       document.getElementById('texto-info').textContent = 'Es una pequeña pieza blanca de hueso, plástico o metal que se encuentra justo después del clavijero. Su función es sostener las cuerdas y mantenerlas separadas correctamente al pasar hacia el mástil, ayudando también a mantener la afinación.';
-      document.getElementById('imagen-info').setAttribute('src', '/hues.jpg');
+      document.getElementById('imagen-info').setAttribute('src', 'hues.jpg');
     };
     
     document.getElementById('hotspot6').onclick = function() {
@@ -298,13 +298,13 @@
     document.getElementById('instrucciones').onclick = function(){
       document.getElementById('titulo-info').textContent = 'Instrucciones';
       document.getElementById('texto-info').textContent = 'Haz click en cada uno de los puntos de la imagen para ver su descripción. Una vez visualizado el interactivo, realiza el test de conocimientos.';
-      document.getElementById('imagen-info').setAttribute('src', 'images/hotspot-cursor.png');
+      document.getElementById('imagen-info').setAttribute('src', 'hotspot-cursor.png');
     };
     document.getElementById('prueba').onclick = function(){
       alert("Bienvenidos a la prueba de conocimientos sobre la guitarra 🎸");
       alert("Responde correctamente todas las preguntas para ganar");
 
-      // 🔹 Pregunta 1
+      
       if(pregunta1 = prompt("¿Cómo se llaman los pequeños mecanismos metálicos que sirven para afinar la guitarra?")){
           pregunta1 = pregunta1.trim();
       }
@@ -315,7 +315,7 @@
           alert("Incorrecto. La respuesta correcta es: clavijas de afinación.");
       }
 
-      // 🔹 Pregunta 2
+      
       if(pregunta2 = prompt("¿Cómo se llama la pequeña pieza blanca que sostiene las cuerdas en la parte superior del mástil?")){
           pregunta2 = pregunta2.trim();
       }
@@ -326,7 +326,7 @@
           alert("Incorrecto. La respuesta correcta es: cejuela.");
       }
 
-      // 🔹 Pregunta 3
+    
       if(pregunta3 = prompt("¿Cómo se llama la varilla metálica interna que mantiene el mástil recto?")){
           pregunta3 = pregunta3.trim();
       }
@@ -337,7 +337,7 @@
           alert("Incorrecto. La respuesta correcta es: alma.");
       }
 
-      // 🔹 Pregunta 4
+      
       if(pregunta4 = prompt("¿Cómo se llama la superficie donde se presionan las cuerdas para tocar las notas?")){
           pregunta4 = pregunta4.trim();
       }
