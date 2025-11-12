@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
   <style>
+    body {
+      background-color: #f5f0eb; 
+
     #header {
       background-color: #922608;
       border-radius: 10px;
@@ -182,6 +185,12 @@
       cursor: pointer;
     }
 
+    /* ✅ Mejora 3: Efecto al pasar el mouse en los hotspots */
+    [id^="hotspot"]:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+      transition: all 0.2s ease-in-out;
+    }
 
     .text-hotspot {
       position: absolute;
@@ -225,8 +234,6 @@
           <div id="hotspot5"><span class="text-hotspot">5</span></div>
           <div id="hotspot6"><span class="text-hotspot">6</span></div>
           <div id="hotspot7"><span class="text-hotspot">7</span></div>
-          
-
         </div>
     </div>
     <div class="contenido">
@@ -301,78 +308,6 @@
       document.getElementById('imagen-info').setAttribute('src', 'hotspot-cursor.png');
     };
     document.getElementById('prueba').onclick = function(){
+      puntaje = 0; 
       alert("Bienvenidos a la prueba de conocimientos sobre la guitarra 🎸");
       alert("Responde correctamente todas las preguntas para ganar");
-
-      
-      if(pregunta1 = prompt("¿Cómo se llaman los pequeños mecanismos metálicos que sirven para afinar la guitarra?")){
-          pregunta1 = pregunta1.trim();
-      }
-      if (pregunta1.toLowerCase() === "clavijas" || pregunta1.toLowerCase() === "clavijas de afinación") {
-          alert("¡Correcto! Las clavijas de afinación sirven para tensar o aflojar las cuerdas.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: clavijas de afinación.");
-      }
-
-      
-      if(pregunta2 = prompt("¿Cómo se llama la pequeña pieza blanca que sostiene las cuerdas en la parte superior del mástil?")){
-          pregunta2 = pregunta2.trim();
-      }
-      if (pregunta2.toLowerCase() === "cejuela") {
-          alert("¡Correcto! La cejuela mantiene las cuerdas separadas y ayuda a la afinación.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: cejuela.");
-      }
-
-    
-      if(pregunta3 = prompt("¿Cómo se llama la varilla metálica interna que mantiene el mástil recto?")){
-          pregunta3 = pregunta3.trim();
-      }
-      if (pregunta3.toLowerCase() === "alma") {
-          alert("¡Correcto! El alma ayuda a mantener el mástil recto.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: alma.");
-      }
-
-      
-      if(pregunta4 = prompt("¿Cómo se llama la superficie donde se presionan las cuerdas para tocar las notas?")){
-          pregunta4 = pregunta4.trim();
-      }
-      if (pregunta4.toLowerCase() === "diapason") {
-          alert("¡Correcto! En el diapasón se presionan las cuerdas para producir las notas.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: diapasón.");
-      }
-
-      // 🔹 Pregunta 5
-      if(pregunta5 = prompt("¿Cómo se llama la parte más grande de la guitarra que le da su forma característica?")){
-          pregunta5 = pregunta5.trim();
-      }
-      if (pregunta5.toLowerCase() === "cuerpo") {
-          alert("¡Correcto! El cuerpo da forma, equilibrio y comodidad al tocar.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: cuerpo.");
-      }
-
-      // 🔹 Resultado
-      if(puntaje >= 5) {
-         alert("🎉 ¡Felicidades! Has respondido correctamente todas las preguntas.");
-          document.getElementById("calif").textContent = puntaje + "/5";
-          document.getElementById("resultado").setAttribute("class", "visible");
-+         document.getElementById("imagen-resultado").setAttribute("src", "/jp.gif");
-         
-
-      } else {
-          alert("Has respondido " + puntaje + " preguntas correctamente. ¡Sigue practicando!");
-          document.getElementById("calif").textContent = puntaje + "/5";
-          document.getElementById("resultado").setAttribute("class", "visible");
-      }
-    };
-  </script>
-</body>
-</html>
