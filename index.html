@@ -205,7 +205,7 @@
     .texto-rojo{
             font-size:40px;
             font-weight: bold;
-            color:rgb(29, 108, 6);
+            color:rgb(108, 6, 6);
     }
   </style>
 </head>
@@ -242,7 +242,7 @@
       <div id="resultado" class="invisible">
         <h2>Tu resultado:</h2>
         <span id="calif" class="texto-rojo">0/0</span>
-        <img id="imagen-resultado" width="200px" src="/sii.gif" />
+        <img id="imagen-resultado" width="200px" src="sii.gif" />
       </div>      
     </div>
   </div>
@@ -301,78 +301,121 @@
       document.getElementById('imagen-info').setAttribute('src', 'images/hotspot-cursor.png');
     };
     document.getElementById('prueba').onclick = function(){
-      alert("Bienvenidos a la prueba de conocimientos sobre la guitarra 🎸");
-      alert("Responde correctamente todas las preguntas para ganar");
+    puntaje = 0; 
+    alert("Bienvenidos a la prueba de conocimientos sobre la guitarra 🎸");
+    alert("Responde correctamente todas las preguntas para ganar");
 
-      // 🔹 Pregunta 1
-      if(pregunta1 = prompt("¿Cómo se llaman los pequeños mecanismos metálicos que sirven para afinar la guitarra?")){
-          pregunta1 = pregunta1.trim();
-      }
-      if (pregunta1.toLowerCase() === "clavijas" || pregunta1.toLowerCase() === "clavijas de afinación") {
-          alert("¡Correcto! Las clavijas de afinación sirven para tensar o aflojar las cuerdas.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: clavijas de afinación.");
-      }
+    // Pregunta 1
+    pregunta1 = prompt("1. ¿Qué parte de la guitarra es responsable de sostener las cuerdas en la parte inferior del cuerpo?\nA) Cejuela\nB) Puente\nC) Mástil\nD) Clavijas");
+    if (pregunta1 && pregunta1.toLowerCase() === "b") {
+        puntaje++;
+        alert("¡Correcto! El puente sostiene las cuerdas en la parte inferior.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es B) Puente.");
+    }
 
-      // 🔹 Pregunta 2
-      if(pregunta2 = prompt("¿Cómo se llama la pequeña pieza blanca que sostiene las cuerdas en la parte superior del mástil?")){
-          pregunta2 = pregunta2.trim();
-      }
-      if (pregunta2.toLowerCase() === "cejuela") {
-          alert("¡Correcto! La cejuela mantiene las cuerdas separadas y ayuda a la afinación.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: cejuela.");
-      }
+    // Pregunta 2
+    pregunta1 = prompt("2. ¿Qué función tienen las clavijas de afinación?\nA) Decorar la guitarra\nB) Tensar o aflojar las cuerdas\nC) Sostener el mástil\nD) Proteger el cuerpo");
+    if (pregunta1 && pregunta1.toLowerCase() === "b") {
+        puntaje++;
+        alert("¡Correcto! Las clavijas sirven para tensar o aflojar las cuerdas y afinar la guitarra.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es B) Tensar o aflojar las cuerdas.");
+    }
 
-      // 🔹 Pregunta 3
-      if(pregunta3 = prompt("¿Cómo se llama la varilla metálica interna que mantiene el mástil recto?")){
-          pregunta3 = pregunta3.trim();
-      }
-      if (pregunta3.toLowerCase() === "alma") {
-          alert("¡Correcto! El alma ayuda a mantener el mástil recto.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: alma.");
-      }
+    // Pregunta 3
+    pregunta1 = prompt("3. ¿Dónde se encuentra la cejuela (nut) en la guitarra?\nA) En el puente\nB) Justo después del clavijero\nC) En el cuerpo\nD) En la parte trasera");
+    if (pregunta1 && pregunta1.toLowerCase() === "b") {
+        puntaje++;
+        alert("¡Correcto! La cejuela está justo después del clavijero.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es B) Justo después del clavijero.");
+    }
 
-      // 🔹 Pregunta 4
-      if(pregunta4 = prompt("¿Cómo se llama la superficie donde se presionan las cuerdas para tocar las notas?")){
-          pregunta4 = pregunta4.trim();
-      }
-      if (pregunta4.toLowerCase() === "diapason") {
-          alert("¡Correcto! En el diapasón se presionan las cuerdas para producir las notas.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: diapasón.");
-      }
+    // Pregunta 4
+    pregunta1 = prompt("4. ¿Qué son los trastes?\nA) Cuerdas de repuesto\nB) Barras metálicas que dividen el diapasón\nC) Tipos de madera\nD) Accesorios decorativos");
+    if (pregunta1 && pregunta1.toLowerCase() === "b") {
+        puntaje++;
+        alert("¡Correcto! Los trastes son las barras metálicas que dividen el diapasón.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es B) Barras metálicas que dividen el diapasón.");
+    }
 
-      // 🔹 Pregunta 5
-      if(pregunta5 = prompt("¿Cómo se llama la parte más grande de la guitarra que le da su forma característica?")){
-          pregunta5 = pregunta5.trim();
-      }
-      if (pregunta5.toLowerCase() === "cuerpo") {
-          alert("¡Correcto! El cuerpo da forma, equilibrio y comodidad al tocar.");
-          puntaje += 1;
-      } else {
-          alert("Incorrecto. La respuesta correcta es: cuerpo.");
-      }
+    // Pregunta 5
+    pregunta1 = prompt("5. ¿Qué parte protege el acceso a la varilla de ajuste (truss rod)?\nA) El puente\nB) La cejuela\nC) El truss rod cover\nD) Las clavijas");
+    if (pregunta1 && pregunta1.toLowerCase() === "c") {
+        puntaje++;
+        alert("¡Correcto! El truss rod cover protege el acceso a la varilla de ajuste.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es C) El truss rod cover.");
+    }
 
-      // 🔹 Resultado
-      if(puntaje >= 5) {
-         alert("🎉 ¡Felicidades! Has respondido correctamente todas las preguntas.");
-          document.getElementById("calif").textContent = puntaje + "/5";
-          document.getElementById("resultado").setAttribute("class", "visible");
-+         document.getElementById("imagen-resultado").setAttribute("src", "/jp.gif");
-         
+    // Pregunta 6
+    pregunta1 = prompt("6. ¿Cuál es la función principal del mástil (neck)?\nA) Amplificar el sonido\nB) Unir la cabeza con el cuerpo\nC) Afinar las cuerdas\nD) Decorar la guitarra");
+    if (pregunta1 && pregunta1.toLowerCase() === "b") {
+        puntaje++;
+        alert("¡Correcto! El mástil une la cabeza con el cuerpo.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es B) Unir la cabeza con el cuerpo.");
+    }
 
-      } else {
-          alert("Has respondido " + puntaje + " preguntas correctamente. ¡Sigue practicando!");
-          document.getElementById("calif").textContent = puntaje + "/5";
-          document.getElementById("resultado").setAttribute("class", "visible");
-      }
-    };
+    // Pregunta 7
+    pregunta1 = prompt("7. ¿Qué parte de la guitarra contiene el alma o varilla de ajuste?\nA) El cuerpo\nB) El puente\nC) El mástil\nD) La cejuela");
+    if (pregunta1 && pregunta1.toLowerCase() === "c") {
+        puntaje++;
+        alert("¡Correcto! El alma o varilla de ajuste va dentro del mástil.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es C) El mástil.");
+    }
+
+    // Pregunta 8
+    pregunta1 = prompt("8. ¿Sobre qué parte de la guitarra se apoyan los dedos al tocar?\nA) El cuerpo\nB) El mástil\nC) El puente\nD) Las clavijas");
+    if (pregunta1 && pregunta1.toLowerCase() === "b") {
+        puntaje++;
+        alert("¡Correcto! Los dedos se apoyan en el mástil al tocar.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es B) El mástil.");
+    }
+
+    // Pregunta 9
+    pregunta1 = prompt("9. ¿Qué parte de la guitarra transmite las vibraciones de las cuerdas al cuerpo?\nA) La cejuela\nB) El puente\nC) Los trastes\nD) El truss rod cover");
+    if (pregunta1 && pregunta1.toLowerCase() === "b") {
+        puntaje++;
+        alert("¡Correcto! El puente transmite las vibraciones al cuerpo de la guitarra.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es B) El puente.");
+    }
+
+    // Pregunta 10
+    pregunta1 = prompt("10. ¿Qué permite ajustar la palanca de trémolo en algunos puentes?\nA) El volumen\nB) Efectos de vibrato\nC) La afinación inicial\nD) El color del sonido");
+    if (pregunta1 && pregunta1.toLowerCase() === "b") {
+        puntaje++;
+        alert("¡Correcto! La palanca de trémolo permite hacer efectos de vibrato.");
+    } else {
+        alert("Incorrecto. La respuesta correcta es B) Efectos de vibrato.");
+    }
+
+    // Mostrar resultado final
+    alert(`¡Prueba completada! Tu puntaje final es: ${puntaje}/10`);
+    
+    // Mostrar resultado en la página
+    document.getElementById('titulo-info').textContent = 'Resultado del Test';
+    document.getElementById('texto-info').textContent = `Has completado la prueba de conocimientos sobre la guitarra.`;
+    document.getElementById('calif').textContent = `${puntaje}/10`;
+    document.getElementById('resultado').classList.remove('invisible');
+    
+    
+    if (puntaje >= 8) {
+        document.getElementById('imagen-resultado').setAttribute('src', 'sii.gif');
+        document.getElementById('texto-info').textContent += ' ¡Excelente! Eres un experto en guitarras.';
+    } else if (pregunta1 >= 5) {
+        document.getElementById('imagen-resultado').setAttribute('src', 'bien.gif');
+        document.getElementById('texto-info').textContent += ' ¡Buen trabajo! Sigue aprendiendo.';
+    } else {
+        document.getElementById('imagen-resultado').setAttribute('src', 'estudia.gif');
+        document.getElementById('texto-info').textContent += ' Sigue practicando y revisa el material nuevamente.';
+    }
+};
   </script>
 </body>
 </html>
