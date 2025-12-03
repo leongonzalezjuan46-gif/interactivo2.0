@@ -1,3 +1,16 @@
+<?php
+$servername = "sql100.infinityfree.com";
+$username = "if0_40528385";
+$password = "TU_PASSWORD";
+$database = "if0_40528385_interactivo";
+
+$conn = new mysqli($servername, $username, $password, $database);
+
+if ($conn->connect_error) {
+    die("Error en la conexión: " . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
