@@ -9,7 +9,38 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Error en la conexión: " . $conn->connect_error);
 }
+
+// Crear tabla de comentarios si no existe
+$sql = "CREATE TABLE IF NOT EXISTS comentarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    comentario TEXT NOT NULL,
+    puntaje INT,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+
+$conn->query($sql);
+
+// Procesar envío del formulario
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['guardar_comentario'])) {
+    $nombre = $conn->real_escape_string($_POST['nombre']);
+    $comentario = $conn->real_escape_string($_POST['comentario']);
+    $puntaje = isset($_POST['puntaje']) ? (int)$_POST['puntaje'] : 0;
+    
+    $sql = "INSERT INTO comentarios (nombre, comentario, puntaje) VALUES ('$nombre', '$comentario', $puntaje)";
+    $conn->query($sql);
+}
+
+// Obtener comentarios
+$comentarios = array();
+$result = $conn->query("SELECT * FROM comentarios ORDER BY fecha DESC");
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $comentarios[] = $row;
+    }
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -220,6 +251,96 @@ if ($conn->connect_error) {
             font-weight: bold;
             color:rgb(108, 6, 6);
     }
+
+    #comentarios {
+      flex:1;
+      cursor: pointer;
+    }
+
+    #seccionComentarios {
+      background-color: rgb(44, 98, 215);
+      padding: 20px;
+      border-radius: 10px;
+      margin: 10px;
+    }
+
+    #listaComentarios {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .comentario-item {
+      background-color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border-left: 4px solid #922608;
+    }
+
+    .comentario-nombre {
+      font-weight: bold;
+      color: #922608;
+      margin-bottom: 5px;
+    }
+
+    .comentario-texto {
+      color: #333;
+      line-height: 1.5;
+    }
+
+    .comentario-puntaje {
+      color: #922608;
+      font-weight: bold;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .comentario-fecha {
+      color: #999;
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .btn-submit {
+      background-color: #922608;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    .btn-submit:hover {
+      background-color: #6b1c06;
+    }
   </style>
 </head>
 <body>
@@ -263,6 +384,39 @@ if ($conn->connect_error) {
     <div id="instrucciones"><img width="100px" src="/instrucciones.png" /></div>
     <div id="prueba"><img width="100px" src="/test.png" /></div>
   </div>
+
+  <!-- Sección de comentarios -->
+  <div id="seccionComentarios">
+    <h2>Comentarios y Puntuaciones</h2>
+    
+    <!-- Formulario para añadir comentarios -->
+    <form method="POST" style="background-color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="comentario">Comentario:</label>
+        <textarea id="comentario" name="comentario" required></textarea>
+      </div>
+      <input type="hidden" id="puntajeInput" name="puntaje" value="0">
+      <button type="submit" name="guardar_comentario" class="btn-submit">Enviar Comentario</button>
+    </form>
+
+    <!-- Lista de comentarios -->
+    <h3>Comentarios recibidos:</h3>
+    <div id="listaComentarios">
+      <?php foreach ($comentarios as $c): ?>
+        <div class="comentario-item">
+          <div class="comentario-nombre"><?php echo htmlspecialchars($c['nombre']); ?></div>
+          <div class="comentario-texto"><?php echo htmlspecialchars($c['comentario']); ?></div>
+          <div class="comentario-puntaje">Puntuación: <?php echo $c['puntaje']; ?>/10</div>
+          <div class="comentario-fecha"><?php echo date('d/m/Y H:i', strtotime($c['fecha'])); ?></div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+
   <script type="text/javascript">
     let puntaje = 0;
     let pregunta1 = "";
@@ -410,6 +564,9 @@ if ($conn->connect_error) {
 
     // Mostrar resultado final
     alert(`¡Prueba completada! Tu puntaje final es: ${puntaje}/10`);
+    
+    // Guardar el puntaje en el input oculto para enviarlo con el formulario
+    document.getElementById('puntajeInput').value = puntaje;
     
     // Mostrar resultado en la página
     document.getElementById('titulo-info').textContent = 'Resultado del Test';
